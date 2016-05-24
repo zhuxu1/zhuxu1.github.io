@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "Android 轮播图"
 subtitle: "Viewpage"
@@ -14,7 +14,7 @@ public class CarouselView extends RelativeLayout {
     public CarouselView(Context context, AttributeSet attrs) {  
         super(context, attrs);  
         init();  
-    }  
+    }   
   
     private ScheduledExecutorService executor;  
     private CirclePageIndicator indicator;  
