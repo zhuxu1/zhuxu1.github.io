@@ -1,0 +1,136 @@
+<p>﻿—
+layout: post
+title: “Android 轮播图”
+subtitle: “Viewpage”
+date: 2016-05-11
+author: fixxz
+category: demo
+tags: demo
+finished: true
+—</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CarouselView</span> <span class="kd">extends</span> <span class="n">RelativeLayout</span> <span class="o">{</span>  
+  
+    <span class="kd">public</span> <span class="n">CarouselView</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">AttributeSet</span> <span class="n">attrs</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">attrs</span><span class="o">);</span>  
+        <span class="n">init</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">private</span> <span class="n">ScheduledExecutorService</span> <span class="n">executor</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="n">CirclePageIndicator</span> <span class="n">indicator</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="n">ViewPager</span> <span class="n">viewPager</span><span class="o">;</span>  
+    <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">ImageView</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="n">ArrayList</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">View</span><span class="o">&gt;</span> <span class="n">views</span><span class="o">;</span>  
+  
+    <span class="kd">private</span> <span class="kt">void</span> <span class="n">init</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="n">LayoutInflater</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="n">getContext</span><span class="o">()).</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">layout_carouseview</span><span class="o">,</span>  
+                <span class="k">this</span><span class="o">);</span>  
+  
+        <span class="n">viewPager</span> <span class="o">=</span> <span class="o">(</span><span class="n">ViewPager</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">carouseview</span><span class="o">);</span>  
+        <span class="n">indicator</span> <span class="o">=</span> <span class="o">(</span><span class="n">CirclePageIndicator</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">carouseview_indicator</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kt">float</span> <span class="n">start_x</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">start_y</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">end_x</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">end_y</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setData</span><span class="o">(</span><span class="n">ArrayList</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">View</span><span class="o">&gt;</span> <span class="n">views</span><span class="o">,</span>  
+            <span class="n">ViewPagerAdapter</span> <span class="n">adapter</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">views</span> <span class="o">=</span> <span class="n">views</span><span class="o">;</span>  
+        <span class="n">viewPager</span><span class="o">.</span><span class="na">setOnTouchListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnTouchListener</span><span class="o">()</span> <span class="o">{</span>  
+  
+            <span class="nd">@Override</span>  
+            <span class="kd">public</span> <span class="kt">boolean</span> <span class="n">onTouch</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">,</span> <span class="n">MotionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>  
+                <span class="kt">int</span> <span class="n">action</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getAction</span><span class="o">();</span>  
+                <span class="k">if</span> <span class="o">(</span><span class="n">action</span> <span class="o">==</span> <span class="n">MotionEvent</span><span class="o">.</span><span class="na">ACTION_DOWN</span><span class="o">)</span> <span class="o">{</span>  
+                    <span class="c1">// toast("down");  </span>
+                    <span class="c1">// Log.i("zhuxu", "down");  </span>
+                    <span class="n">start_x</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getX</span><span class="o">();</span>  
+                    <span class="n">start_y</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getY</span><span class="o">();</span>  
+                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">action</span> <span class="o">==</span> <span class="n">MotionEvent</span><span class="o">.</span><span class="na">ACTION_UP</span><span class="o">)</span> <span class="o">{</span>  
+                    <span class="c1">// toast("up");  </span>
+                    <span class="c1">// Log.i("zhuxu", "up");  </span>
+                    <span class="n">end_x</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getX</span><span class="o">();</span>  
+                    <span class="n">end_y</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getY</span><span class="o">();</span>  
+                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">action</span> <span class="o">==</span> <span class="n">MotionEvent</span><span class="o">.</span><span class="na">ACTION_MOVE</span><span class="o">)</span> <span class="o">{</span>  
+                    <span class="c1">// Log.i("zhuxu", "move : " + "start_x : " + start_x  </span>
+                    <span class="c1">// + "start_y : " + start_y + "end_x : " + end_x  </span>
+                    <span class="c1">// + "end_y : " + end_y);  </span>
+                    <span class="c1">// toast("move");  </span>
+                    <span class="c1">// if (Math.abs(end_x - start_x) &gt; 50 &amp;&amp; Math.abs(end_y -  </span>
+                    <span class="c1">// start_y) &lt; 100) {  </span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">end_x</span> <span class="o">-</span> <span class="n">start_x</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">end_y</span> <span class="o">-</span> <span class="n">start_y</span><span class="o">))</span> <span class="o">{</span>  
+                        <span class="c1">// Log.i("zhuxu", "横向移动！");  </span>
+                        <span class="c1">//此句代码是为了通知他的父View 现在进行的是本控件的操作，不要对我的操作进行干扰  </span>
+                        <span class="n">v</span><span class="o">.</span><span class="na">getParent</span><span class="o">().</span><span class="na">requestDisallowInterceptTouchEvent</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>  
+                        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> <span class="c1">// 是否需要View继续处理  </span>
+                    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>  
+                        <span class="c1">//接近垂直滑动，交给父控件处理  </span>
+                        <span class="n">v</span><span class="o">.</span><span class="na">getParent</span><span class="o">().</span><span class="na">requestDisallowInterceptTouchEvent</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>  
+                        <span class="c1">// Log.i("zhuxu", "纵向移动！");  </span>
+                        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>  <span class="c1">// 是否需要View继续处理  </span>
+                    <span class="o">}</span>  
+                <span class="o">}</span>  
+                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>  
+            <span class="o">}</span>  
+        <span class="o">});</span>  
+  
+        <span class="n">viewPager</span><span class="o">.</span><span class="na">setAdapter</span><span class="o">(</span><span class="n">adapter</span><span class="o">);</span>  
+        <span class="n">indicator</span><span class="o">.</span><span class="na">setOnPageChangeListener</span><span class="o">(</span><span class="k">new</span> <span class="n">OnPageChangeListener</span><span class="o">()</span> <span class="o">{</span>  
+  
+            <span class="nd">@Override</span>  
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onPageSelected</span><span class="o">(</span><span class="kt">int</span> <span class="n">arg0</span><span class="o">)</span> <span class="o">{</span>  
+                <span class="n">isChanged</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>  
+            <span class="o">}</span>  
+  
+            <span class="nd">@Override</span>  
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onPageScrolled</span><span class="o">(</span><span class="kt">int</span> <span class="n">arg0</span><span class="o">,</span> <span class="kt">float</span> <span class="n">arg1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">arg2</span><span class="o">)</span> <span class="o">{</span>  
+  
+            <span class="o">}</span>  
+  
+            <span class="nd">@Override</span>  
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onPageScrollStateChanged</span><span class="o">(</span><span class="kt">int</span> <span class="n">arg0</span><span class="o">)</span> <span class="o">{</span>  
+  
+            <span class="o">}</span>  
+        <span class="o">});</span>  
+        <span class="n">indicator</span><span class="o">.</span><span class="na">setViewPager</span><span class="o">(</span><span class="n">viewPager</span><span class="o">);</span>  
+  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="n">ViewPager</span> <span class="n">getCarouselView</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">return</span> <span class="n">viewPager</span><span class="o">;</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">startCarouse</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="n">executor</span> <span class="o">=</span> <span class="n">Executors</span><span class="o">.</span><span class="na">newSingleThreadScheduledExecutor</span><span class="o">();</span>  
+        <span class="n">executor</span><span class="o">.</span><span class="na">scheduleWithFixedDelay</span><span class="o">(</span><span class="k">new</span> <span class="n">ViewpagerTask</span><span class="o">(),</span>  
+                <span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">cancleCarouse</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">if</span> <span class="o">(</span><span class="n">executor</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>  
+            <span class="n">executor</span><span class="o">.</span><span class="na">shutdown</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">currentItem</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isChanged</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>  
+  
+    <span class="kd">private</span> <span class="kd">class</span> <span class="nc">ViewpagerTask</span> <span class="kd">implements</span> <span class="n">Runnable</span> <span class="o">{</span>  
+  
+        <span class="nd">@Override</span>  
+        <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">()</span> <span class="o">{</span>  
+            <span class="k">if</span> <span class="o">(</span><span class="n">isChanged</span><span class="o">)</span> <span class="o">{</span>  
+                <span class="n">isChanged</span> <span class="o">=</span> <span class="o">!</span><span class="n">isChanged</span><span class="o">;</span>  
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>  
+                <span class="n">currentItem</span> <span class="o">=</span> <span class="o">(</span><span class="n">viewPager</span><span class="o">.</span><span class="na">getCurrentItem</span><span class="o">()</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">%</span> <span class="n">views</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>  
+                <span class="n">post</span><span class="o">(</span><span class="k">new</span> <span class="n">Runnable</span><span class="o">()</span> <span class="o">{</span>  
+                    <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">()</span> <span class="o">{</span>  
+                        <span class="n">viewPager</span><span class="o">.</span><span class="na">setCurrentItem</span><span class="o">(</span><span class="n">currentItem</span><span class="o">);</span>  
+                    <span class="o">}</span>  
+                <span class="o">});</span>  
+            <span class="o">}</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>  </code></pre></figure>
+
+<p>不放布局文件会被打死/.?</p>
+
+<p><img src="https://i.niupic.com/images/2016/05/24/tKjdve.jpg" alt="福利" /></p>
