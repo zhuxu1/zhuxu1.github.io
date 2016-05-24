@@ -1,11 +1,11 @@
----
+﻿---
 layout: post
 title: "Android 轮播图"
 subtitle: "Viewpage"
 date: 2016-05-11
 author: fixxz
 category: demo
-tags: dmo
+tags: demo
 finished: true
 ---
 {% highlight java %}
@@ -132,3 +132,5 @@ public class CarouselView extends RelativeLayout {
 }  
 {% endhighlight %}
 不放布局文件会被打死/.?
+
+![福利](https://i.niupic.com/images/2016/05/24/tKjdve.jpg)
