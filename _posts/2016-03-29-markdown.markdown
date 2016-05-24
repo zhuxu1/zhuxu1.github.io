@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Markdown Gramma"
+title: "Jekyll 教程"
 subtitle: "A brief introduction about Markdown Grammar. "
 date: 2016-03-29
 author: Benjamin
-category: coding
-tags: code markdown github
+category: github
+tags: github
 finished: true
 ---
 
