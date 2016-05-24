@@ -4,11 +4,80 @@
     <title>Zhuxu&#39;s Blog</title>
     <description>A Simple Jekyll Blog Theme. # this means to ignore newlines until &quot;baseurl:&quot;
 </description>
-    <link>https://zhuxu1.github.io/zhuxu1.github.io/</link>
-    <atom:link href="https://zhuxu1.github.io/zhuxu1.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 22 May 2016 16:55:27 +0800</pubDate>
-    <lastBuildDate>Sun, 22 May 2016 16:55:27 +0800</lastBuildDate>
+    <link>https://zhuxu1.github.iohttps://zx4android.com/</link>
+    <atom:link href="https://zhuxu1.github.iohttps://zx4android.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 24 May 2016 20:21:53 +0800</pubDate>
+    <lastBuildDate>Tue, 24 May 2016 20:21:53 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Eclipse 快捷键</title>
+        <description>&lt;h2 id=&quot;eclipse-&quot;&gt;Eclipse 常用默认快捷键&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ctrl+Alt+H&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如果你想知道一个类的方法到底被那些其他的类调用，那么请选中这个方法名，然后按“Ctrl+Alt+H”，Eclipse就会显示出这个方法被哪些方法调用，最终产生一个调用关系树。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ALt + down/up&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;快速移动代码行&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ctrl + alt = down/up&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;将当前行的代码复制在该行的下/上一行复制&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ctrl + o&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;快速概要(quick outline)。通过这个快捷键，你可以迅速的跳到一个方法或者属性，只需要输入名字的头几个字母。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;F3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;快速进入方法&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ctrl + shift + R&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;打开资源（不只是用来寻找Java文件）&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ctrl + shift + t  和 Ctrl + t&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;列出接口的实现类列表&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ctrl + shift + o&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;自动import (有时并不一定是你想要的 相信我)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ctrl + shift + g 和 Ctrl + g&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在workspace中搜索引用（reference）。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 24 May 2016 00:00:00 +0800</pubDate>
+        <link>https://zhuxu1.github.iohttps://zx4android.com/essay/eclipsekey.html</link>
+        <guid isPermaLink="true">https://zhuxu1.github.iohttps://zx4android.com/essay/eclipsekey.html</guid>
+        
+        <category>essay</category>
+        
+        
+        <category>essay</category>
+        
+      </item>
     
       <item>
         <title>Android Viewpage与ListView焦点冲突问题</title>
@@ -57,8 +126,8 @@
 要做的其实很简单   在Viewpager中检测手势是否为纵向滑动  如果不是就拦截&lt;/p&gt;
 </description>
         <pubDate>Wed, 11 May 2016 00:00:00 +0800</pubDate>
-        <link>https://zhuxu1.github.io/zhuxu1.github.io/bug/viewpagerlistview.html</link>
-        <guid isPermaLink="true">https://zhuxu1.github.io/zhuxu1.github.io/bug/viewpagerlistview.html</guid>
+        <link>https://zhuxu1.github.iohttps://zx4android.com/bug/viewpagerlistview.html</link>
+        <guid isPermaLink="true">https://zhuxu1.github.iohttps://zx4android.com/bug/viewpagerlistview.html</guid>
         
         <category>bug</category>
         
@@ -195,8 +264,8 @@
 &lt;p&gt;不放布局文件会被打死/.?&lt;/p&gt;
 </description>
         <pubDate>Wed, 11 May 2016 00:00:00 +0800</pubDate>
-        <link>https://zhuxu1.github.io/zhuxu1.github.io/demo/lunbotu.html</link>
-        <guid isPermaLink="true">https://zhuxu1.github.io/zhuxu1.github.io/demo/lunbotu.html</guid>
+        <link>https://zhuxu1.github.iohttps://zx4android.com/demo/lunbotu.html</link>
+        <guid isPermaLink="true">https://zhuxu1.github.iohttps://zx4android.com/demo/lunbotu.html</guid>
         
         <category>dmo</category>
         
@@ -222,8 +291,8 @@ android:focusableInTouchMode=&quot;true&quot; &lt;/code&gt;&lt;/p&gt;
  }  `&lt;/p&gt;
 </description>
         <pubDate>Thu, 05 May 2016 00:00:00 +0800</pubDate>
-        <link>https://zhuxu1.github.io/zhuxu1.github.io/bug/scrollview.html</link>
-        <guid isPermaLink="true">https://zhuxu1.github.io/zhuxu1.github.io/bug/scrollview.html</guid>
+        <link>https://zhuxu1.github.iohttps://zx4android.com/bug/scrollview.html</link>
+        <guid isPermaLink="true">https://zhuxu1.github.iohttps://zx4android.com/bug/scrollview.html</guid>
         
         <category>bug</category>
         
@@ -242,8 +311,8 @@ android:focusableInTouchMode=&quot;true&quot; &lt;/code&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Wed, 30 Mar 2016 00:00:00 +0800</pubDate>
-        <link>https://zhuxu1.github.io/zhuxu1.github.io/jekyll/welcome.html</link>
-        <guid isPermaLink="true">https://zhuxu1.github.io/zhuxu1.github.io/jekyll/welcome.html</guid>
+        <link>https://zhuxu1.github.iohttps://zx4android.com/jekyll/welcome.html</link>
+        <guid isPermaLink="true">https://zhuxu1.github.iohttps://zx4android.com/jekyll/welcome.html</guid>
         
         <category>blog</category>
         
@@ -253,7 +322,7 @@ android:focusableInTouchMode=&quot;true&quot; &lt;/code&gt;&lt;/p&gt;
       </item>
     
       <item>
-        <title>Markdown Gramma</title>
+        <title>Jekyll 教程</title>
         <description>&lt;h2 id=&quot;heading&quot;&gt;Heading&lt;/h2&gt;
 
 &lt;p&gt;Heading is really simple in Markdown, you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;#&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt;.&lt;/p&gt;
@@ -483,7 +552,7 @@ android:focusableInTouchMode=&quot;true&quot; &lt;/code&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post-header-container&amp;gt;
   &amp;lt;div class=&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;scrim&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;header&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post-header&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Markdown Gramma&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Jekyll 教程&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
         &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;info&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;by &lt;span class=&quot;nt&quot;&gt;&amp;lt;strong&amp;gt;&lt;/span&gt;Benjamin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;/header&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
@@ -588,17 +657,13 @@ android:focusableInTouchMode=&quot;true&quot; &lt;/code&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Tue, 29 Mar 2016 00:00:00 +0800</pubDate>
-        <link>https://zhuxu1.github.io/zhuxu1.github.io/coding/markdown.html</link>
-        <guid isPermaLink="true">https://zhuxu1.github.io/zhuxu1.github.io/coding/markdown.html</guid>
-        
-        <category>code</category>
-        
-        <category>markdown</category>
+        <link>https://zhuxu1.github.iohttps://zx4android.com/github/markdown.html</link>
+        <guid isPermaLink="true">https://zhuxu1.github.iohttps://zx4android.com/github/markdown.html</guid>
         
         <category>github</category>
         
         
-        <category>coding</category>
+        <category>github</category>
         
       </item>
     
@@ -640,8 +705,8 @@ android:focusableInTouchMode=&quot;true&quot; &lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;随笔&lt;/p&gt;
 </description>
         <pubDate>Mon, 28 Mar 2016 00:00:00 +0800</pubDate>
-        <link>https://zhuxu1.github.io/zhuxu1.github.io/essay/wrapcontent.html</link>
-        <guid isPermaLink="true">https://zhuxu1.github.io/zhuxu1.github.io/essay/wrapcontent.html</guid>
+        <link>https://zhuxu1.github.iohttps://zx4android.com/essay/wrapcontent.html</link>
+        <guid isPermaLink="true">https://zhuxu1.github.iohttps://zx4android.com/essay/wrapcontent.html</guid>
         
         <category>essay</category>
         
@@ -663,8 +728,8 @@ webView.loadData(htmlData, &quot;text/html; charset=UTF-8&quot;, null);//这种�
     public static final String APP_CSS = &quot;&amp;lt;style&amp;gt; html, body{ margin:0; padding:1px; color:#666666; font-style:normal; font-weight:normal; font-size:13px;} div, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, select, p, blockquote, th, td, ol, ul, li{ width:auto; margin:0; padding:0; color:#666666; font-style:normal; font-weight:normal; font-size:13px;} fieldset, img{ border:0;} address, button, caption, cite, code, dfn, em, input, optgroup, option, select, strong, textarea, th, var, span{  font : inherit; color:#666666; font-style:normal; font-weight:normal;} del, ins{ text-decoration:none;} ol, ul, dl{margin-left : 15px;} ol{ list-style:decimal outside;} ul{ list-style:disc outside;} li{ margin:0; padding:0; width:auto; color:#666666; font-style:normal; font-weight:normal; text-indent:-3px; font-size:13px;} h1, h2, h3, h4, h5, h6{ width:auto; font-size:100%; font-weight:normal;} abbr, acronym{ border:0; font-variant:normal;} a, a:link, a:visited, a:hover, a:active{ text-decoration:none; color:#666666} table{ border-collapse:collapse; border-spacing:0; width:auto;} table{ width:100%; border:1px solid #666; } table td, table th, tbody td, tbody th{ width:auto; padding:3px; border:1px solid #c1c1c1; } strong{font-weight:bold} &amp;lt;/style&amp;gt;&quot;;  &lt;/code&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 27 Jan 2016 00:00:00 +0800</pubDate>
-        <link>https://zhuxu1.github.io/zhuxu1.github.io/essay/webview.html</link>
-        <guid isPermaLink="true">https://zhuxu1.github.io/zhuxu1.github.io/essay/webview.html</guid>
+        <link>https://zhuxu1.github.iohttps://zx4android.com/essay/webview.html</link>
+        <guid isPermaLink="true">https://zhuxu1.github.iohttps://zx4android.com/essay/webview.html</guid>
         
         <category>essay</category>
         
@@ -732,8 +797,8 @@ setHorizontalSpacing    设置两列之间的间距&amp;lt;/br&amp;gt;
 setLayoutParams    设置Gridview布局参数&lt;/p&gt;
 </description>
         <pubDate>Thu, 18 Jun 2015 00:00:00 +0800</pubDate>
-        <link>https://zhuxu1.github.io/zhuxu1.github.io/essay/horizontalgridinlist.html</link>
-        <guid isPermaLink="true">https://zhuxu1.github.io/zhuxu1.github.io/essay/horizontalgridinlist.html</guid>
+        <link>https://zhuxu1.github.iohttps://zx4android.com/essay/horizontalgridinlist.html</link>
+        <guid isPermaLink="true">https://zhuxu1.github.iohttps://zx4android.com/essay/horizontalgridinlist.html</guid>
         
         <category>essay</category>
         
@@ -924,25 +989,8 @@ setLayoutParams    设置Gridview布局参数&lt;/p&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/manifest&amp;gt;&lt;/span&gt;  &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
         <pubDate>Mon, 09 Mar 2015 00:00:00 +0800</pubDate>
-        <link>https://zhuxu1.github.io/zhuxu1.github.io/bug/broadcastreceiver.html</link>
-        <guid isPermaLink="true">https://zhuxu1.github.io/zhuxu1.github.io/bug/broadcastreceiver.html</guid>
-        
-        <category>bug</category>
-        
-        
-        <category>bug</category>
-        
-      </item>
-    
-      <item>
-        <title>Android footerDeviersEnabled设置无效</title>
-        <description>&lt;p&gt;ListView中每个Item项之间都有分割线，设置Android:footerDividersEnabled表示是否显示分割线，此属性默认为true。
-设置android:footerDividersEnabled运行没有效果
-只需要将listView的 height  改成match_parent 即可&lt;/p&gt;
-</description>
-        <pubDate>Tue, 17 Feb 2015 00:00:00 +0800</pubDate>
-        <link>https://zhuxu1.github.io/zhuxu1.github.io/bug/footerdevider.html</link>
-        <guid isPermaLink="true">https://zhuxu1.github.io/zhuxu1.github.io/bug/footerdevider.html</guid>
+        <link>https://zhuxu1.github.iohttps://zx4android.com/bug/broadcastreceiver.html</link>
+        <guid isPermaLink="true">https://zhuxu1.github.iohttps://zx4android.com/bug/broadcastreceiver.html</guid>
         
         <category>bug</category>
         
