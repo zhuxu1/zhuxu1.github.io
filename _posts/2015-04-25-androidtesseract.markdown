@@ -26,7 +26,7 @@ finished: true
 <b> // 如果这一步没做好   会报错  “Java.lang.IllegalArgumentException: Data path must contain subfolder tessdata”</b><br>
 如果下载正确应该是下面这样:<br>
 ![Example]({{ site.url }}/img/2015-04-25-androidtesseract.png "Example")
-![Example]({{ site.url }}/img/code.png "Example")
+
 ## step3 使用
 `public String doOcr(Bitmap bitmap, String language) {  
             TessBaseAPI baseApi = new TessBaseAPI();  
