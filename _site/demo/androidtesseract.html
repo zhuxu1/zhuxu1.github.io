@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS -->
+
+  <link rel="stylesheet" href="/zhuxu1.github.io/css/main.css">
+  <link rel="canonical" href="https://zhuxu1.github.io/zhuxu1.github.io/demo/androidtesseract.html">
+  <link rel="alternate" type="application/rss+xml" title="Zhuxu's Blog" href="https://zhuxu1.github.io/zhuxu1.github.io/feed.xml">
+
+<!-- Google font -->
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto Sans">
+
+<!-- font awesome -->
+
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+
+</head>
+
+
+  
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+  ga('create', 'UA-75034651-1', 'auto');
+  ga('send', 'pageview');
+    
+	</script>
+
+
+  
+
+  
+
+  </head>
+
+  <body>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Android ttesseract识别数字demo</title>
+  <meta name="description" content="最近接触到Tesseract，有个感触就是人与人之间的差距可能就在 Google和Baibu 之间好了，话不多说，关于Tesseract背景什么的我不介绍了入正题:">
+</head>
+
+
+  <div class="wrapper">
+          <header class="post-header">
+
+    <center><div class="post-title" itemprop="name headline">Android ttesseract识别数字demo</div>
+
+		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="06 Feb 2015" itemprop="datePublished">Feb 6 2015</time>
+
+		&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">fixxz</span>
+        
+		<br>
+		<i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span>
+	</div>
+
+        
+        <div class="post-tags">
+        
+		<a class="post-tags-item" href="https://zhuxu1.github.io/zhuxu1.github.io/tags/">demo</a>
+        
+	</div>
+    </center>
+    
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="post-content">
+    <center>
+	
+	<p>-</p>
+	
+    </center>
+	<h2>Directory</h2>
+</div>
+
+<div id="category"></div>
+
+<div class="post-content" itemprop="articleBody">
+    <p>最近接触到Tesseract，有个感触就是人与人之间的差距可能就在 Google和Baibu 之间<br />
+好了，话不多说，关于Tesseract背景什么的我不介绍了<br />
+入正题:</p>
+
+<h2 id="step1-">step1: 下载</h2>
+<p>首先去<a href="http://code.google.com/p/tesseract-ocr/downloads/list">点击</a> 下载Tesseract,目前版本是3.02，我用的3.01 。//自行翻墙<br />
+//关于如何在Windows以及其它非Android环境下使用 Tesseract ，请自行百度谷歌<br />
+另外記得在項目主頁下載相关的語言包，想想如果没有语言包你拿什么识别<br />
+以Android端为例，如果需要识别中文，则找到一个  Chinese(simple) 开头  ，如果识别 英文就是 English，其它语言同理<br />
+//Android 的JAR包   http://pan.baidu.com/s/1eQjcjse    (好像没有密码了) gcvh<br /></p>
+
+<h2 id="step2-">step2 配置</h2>
+<p>将你下载的语言包解压，得到一个traineddata类型的文件，以中文为例，文件名为  “chi_sim.traineddata”   <br />
+ 放到对应目录下的tessdata目录下<br />
+比如我放的目录为  /mnt/sdcard/tesseract<br />
+<b> // 如果这一步没做好   会报错  “Java.lang.IllegalArgumentException: Data path must contain subfolder tessdata”</b><br />
+如果下载正确应该是下面这样:<br />
+<img src="https://zhuxu1.github.io/img/2015-04-25-androidtesseract.png" alt="Example" title="Example" />
+## step3 使用
+`public String doOcr(Bitmap bitmap, String language) {<br />
+            TessBaseAPI baseApi = new TessBaseAPI();<br />
+            baseApi.init(“/mnt/sdcard/tesseract”, language);<br />
+            int w = bitmap.getWidth();<br />
+            int h = bitmap.getHeight();<br />
+            Log.e(“client_img”, w+”:”+h);<br />
+            //灰度化<br />
+            bitmap = convertToGrayscale(bitmap);<br />
+            bitmap = Bitmap.createBitmap(bitmap, 130, 70, w-260, h-140);</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>        // 必须加此行，tess-two要求BMP必须为此配置  
+        //copy改为图的大小产生一个新位图，图像的大小为256位图。true表示产生的图片可以切割。  
+        bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);       
+        baseApi.setImage(bitmap);  
+        String text = baseApi.getUTF8Text();  
+        baseApi.clear();  
+        baseApi.end();  
+        return text;                  
+    }  `
+</code></pre>
+</div>
+
+<h2 id="step4-tips">step4 tips</h2>
+<p><code class="highlighter-rouge">String text_result = new LicensePlate().doOcr(bitmap, "chi_sim");</code><br />
+此处是识别为  “chi_sim”  即  Chinese  simple  简体中文<br />
+<b>如果需要识别英文   把”chi_sim”改为”eng”   其它同理  </b><br /></p>
+
+<p>這差不多是基本步驟   國內百度的文檔 不是很多   也有幾篇值得借鑒的參考資料   各位可自行百度<br />
+  另外可以查看 它的源碼  源碼都自帶說明  仔細看看會帶給你很大提升<br /></p>
+
+<p>如果實在有問題可以  去Google搜英文    看不懂的Google翻譯  <br /></p>
+
+<p>另外給自己留一句話  <b>“保持本心”</b></p>
+
+</div>
+
+<div>
+	
+	<div class="eof"></div>
+	
+</div>
+
+<div class="share">
+    <p>Share this post with: </p>
+	<a href="https://twitter.com/intent/tweet?text=Android ttesseract识别数字demo@zhuxu1&amp;url=https://zhuxu1.github.io/zhuxu1.github.io/demo/androidtesseract.html" class="twitter-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://zhuxu1.github.io/zhuxu1.github.io/demo/androidtesseract.html" class="facebook-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://plus.google.com/share?url=https://zhuxu1.github.io/zhuxu1.github.io/demo/androidtesseract.html" class="googleplus-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+</div>
+
+
+<div id="disqus_thread"></div>
+
+
+<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+		var disqus_shortname = "zhuxu1";
+		var disqus_identifier = "/demo/androidtesseract";
+		var disqus_url = "https://zhuxu1.github.io/demo/androidtesseract.html";
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+
+ 
+</div>
+
+
+</article>
+
+  </div>
+
+</body>
+
+<foot>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <center>
+        
+		<p><a class="link" href="/zhuxu1.github.io/archive/">文章</a> /
+		<a class="link" href="/zhuxu1.github.io/category/">类别</a> / 
+		<a class="link" href="/zhuxu1.github.io/tags/">标签</a> / 
+		<a class="link" href="/zhuxu1.github.io/about/">关于</a> /
+		<a class="link" href="/zhuxu1.github.io/contact/">Contact</a>
+        </p>
+
+        <span><script>document.write(new Date().getFullYear());</script></span>
+        <span>&copy;</span>
+        
+		<a class="link" href="/zhuxu1.github.io">FIXME</a>
+		<br>
+		<span>Theme &copy; <a class="link" href="http://weibo.com/fixxz" target="_blank"> 新浪微博</a> | Git : </span>
+				<iframe
+			style="margin-left: 2px; margin-bottom:-5px;"
+			frameborder="0" scrolling="0" width="91px" height="20px"
+			src="https://ghbtns.com/github-btn.html?user=zhuxu1&repo=zhuxu1.github.io&type=star&count=true" >
+		</iframe>
+
+    </center>
+    
+  </div>
+
+</footer>
+
+    <foot>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Derictory -->
+
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+
+<!-- Hit analytics -->
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Directory -->
+
+<script src="/zhuxu1.github.io/js/main.js"></script>
+
+</foot>
+
+
+</foot>
+
+</html>

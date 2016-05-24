@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS -->
+
+  <link rel="stylesheet" href="/zhuxu1.github.io/css/main.css">
+  <link rel="canonical" href="https://zhuxu1.github.io/zhuxu1.github.io/bug/broadcastreceiver.html">
+  <link rel="alternate" type="application/rss+xml" title="Zhuxu's Blog" href="https://zhuxu1.github.io/zhuxu1.github.io/feed.xml">
+
+<!-- Google font -->
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto Sans">
+
+<!-- font awesome -->
+
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+
+</head>
+
+
+  
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+  ga('create', 'UA-75034651-1', 'auto');
+  ga('send', 'pageview');
+    
+	</script>
+
+
+  
+
+  
+
+  </head>
+
+  <body>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Android BroadcastReceiver简单实例</title>
+  <meta name="description" content="MainActivity  广播发起者">
+</head>
+
+
+  <div class="wrapper">
+          <header class="post-header">
+
+    <center><div class="post-title" itemprop="name headline">Android BroadcastReceiver简单实例</div>
+
+		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="09 Mar 2015" itemprop="datePublished">Mar 9 2015</time>
+
+		&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">fixxz</span>
+        
+		<br>
+		<i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span>
+	</div>
+
+        
+        <div class="post-tags">
+        
+		<a class="post-tags-item" href="https://zhuxu1.github.io/zhuxu1.github.io/tags/">bug</a>
+        
+	</div>
+    </center>
+    
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="post-content">
+    <center>
+	
+	<p>demo</p>
+	
+    </center>
+	<h2>Directory</h2>
+</div>
+
+<div id="category"></div>
+
+<div class="post-content" itemprop="articleBody">
+    <h2 id="mainactivity--">MainActivity  广播发起者</h2>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">pic</span><span class="o">.</span><span class="na">zx</span><span class="o">.</span><span class="na">testbroadcastreceiver</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">android.app.Activity</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.app.AlertDialog</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.content.DialogInterface</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.os.Handler</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.os.Message</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.view.View.OnClickListener</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>  
+  
+    <span class="kd">private</span> <span class="n">Button</span> <span class="n">btn_intent</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">TextView</span> <span class="n">text_show</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="n">Intent</span> <span class="n">intent</span><span class="o">;</span>  
+    <span class="kd">final</span> <span class="n">String</span> <span class="n">INTENT_ACTION</span> <span class="o">=</span> <span class="s">"pic.zx.action.service"</span><span class="o">;</span>  
+    <span class="kd">final</span> <span class="n">String</span> <span class="n">INTENT_ACTION2</span> <span class="o">=</span> <span class="s">"pic.zx.action.service2"</span><span class="o">;</span>  
+    <span class="nd">@Override</span>  
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="n">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>  
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>  
+        <span class="n">initView</span><span class="o">();</span>  
+    <span class="o">}</span>  
+    <span class="kd">private</span> <span class="kt">void</span> <span class="n">initView</span><span class="o">(){</span>  
+        <span class="n">btn_intent</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_intent</span><span class="o">);</span>  
+        <span class="n">text_show</span> <span class="o">=</span> <span class="o">(</span><span class="n">TextView</span><span class="o">)</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">text_show</span><span class="o">);</span>  
+        <span class="n">btn_intent</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">OnClickListener</span><span class="o">()</span> <span class="o">{</span>  
+            <span class="nd">@Override</span>  
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>  
+                <span class="k">new</span> <span class="n">AlertDialog</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">)</span>  
+                    <span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="s">"Make a choose"</span><span class="o">)</span>  
+                    <span class="o">.</span><span class="na">setPositiveButton</span><span class="o">(</span><span class="s">"无序广播"</span><span class="o">,</span> <span class="k">new</span> <span class="n">DialogInterface</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>  
+                        <span class="nd">@Override</span>  
+                        <span class="kd">public</span> <span class="kt">void</span> <span class="n">onClick</span><span class="o">(</span><span class="n">DialogInterface</span> <span class="n">dialog</span><span class="o">,</span> <span class="kt">int</span> <span class="n">which</span><span class="o">)</span> <span class="o">{</span>  
+                            <span class="c1">// TODO Auto-generated method stub  </span>
+                            <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">();</span>  
+                            <span class="n">intent</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">"extra"</span><span class="o">,</span> <span class="s">"im a test from the MainActivity"</span><span class="o">);</span>  
+                            <span class="n">intent</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">"if"</span><span class="o">,</span> <span class="s">"no"</span><span class="o">);</span>  
+                            <span class="n">intent</span><span class="o">.</span><span class="na">setAction</span><span class="o">(</span><span class="n">INTENT_ACTION2</span><span class="o">);</span>  
+                            <span class="n">sendBroadcast</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>  
+                        <span class="o">}</span>  
+                    <span class="o">})</span>  
+                    <span class="o">.</span><span class="na">setNegativeButton</span><span class="o">(</span><span class="s">"有序广播"</span><span class="o">,</span> <span class="k">new</span> <span class="n">DialogInterface</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>  
+                          
+                        <span class="nd">@Override</span>  
+                        <span class="kd">public</span> <span class="kt">void</span> <span class="n">onClick</span><span class="o">(</span><span class="n">DialogInterface</span> <span class="n">dialog</span><span class="o">,</span> <span class="kt">int</span> <span class="n">which</span><span class="o">)</span> <span class="o">{</span>  
+                            <span class="c1">// TODO Auto-generated method stub  </span>
+                            <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">();</span>  
+                            <span class="n">intent</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">"extra"</span><span class="o">,</span> <span class="s">"im a test from the MainActivity"</span><span class="o">);</span>  
+                            <span class="n">intent</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">"if"</span><span class="o">,</span> <span class="s">"yes"</span><span class="o">);</span>  
+                            <span class="n">intent</span><span class="o">.</span><span class="na">setAction</span><span class="o">(</span><span class="n">INTENT_ACTION</span><span class="o">);</span>  
+                            <span class="n">sendOrderedBroadcast</span><span class="o">(</span><span class="n">intent</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>  
+                        <span class="o">}</span>  
+                    <span class="o">}).</span><span class="na">create</span><span class="o">().</span><span class="na">show</span><span class="o">();</span>  
+            <span class="o">}</span>  
+        <span class="o">});</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">handler_tell</span> <span class="kd">extends</span> <span class="n">Handler</span><span class="o">{</span>  
+        <span class="nd">@Override</span>  
+        <span class="kd">public</span> <span class="kt">void</span> <span class="n">handleMessage</span><span class="o">(</span><span class="n">Message</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="k">if</span><span class="o">(</span><span class="n">msg</span><span class="o">.</span><span class="na">what</span> <span class="o">==</span> <span class="mi">20201</span><span class="o">){</span>  
+                <span class="n">text_show</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"第一次已接收"</span><span class="o">);</span>  
+            <span class="o">}</span>  
+            <span class="k">if</span><span class="o">(</span><span class="n">msg</span><span class="o">.</span><span class="na">what</span> <span class="o">==</span> <span class="mi">20</span><span class="o">){</span>  
+                <span class="n">text_show</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"     已发送!!"</span><span class="o">);</span>  
+            <span class="o">}</span>  
+            <span class="k">if</span><span class="o">(</span><span class="n">msg</span><span class="o">.</span><span class="na">what</span> <span class="o">==</span> <span class="mi">202</span><span class="o">){</span>  
+                <span class="n">text_show</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"     已接收!!"</span><span class="o">);</span>  
+            <span class="o">}</span>  
+            <span class="kd">super</span><span class="o">.</span><span class="na">handleMessage</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>  </code></pre></figure>
+
+<h2 id="secondactivity------20">SecondActivity   无序广播的接受者   有序广播的优先接受者(优先级为20)</h2>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">pic</span><span class="o">.</span><span class="na">zx</span><span class="o">.</span><span class="na">testbroadcastreceiver</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">pic.zx.testbroadcastreceiver.MainActivity.handler_tell</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.content.BroadcastReceiver</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SecondActivity</span> <span class="kd">extends</span> <span class="n">BroadcastReceiver</span><span class="o">{</span>  
+    <span class="n">handler_tell</span> <span class="n">h</span> <span class="o">=</span> <span class="k">new</span> <span class="n">handler_tell</span><span class="o">();</span>  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onReceive</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="c1">// TODO Auto-generated method stub  </span>
+        <span class="n">h</span><span class="o">.</span><span class="na">sendEmptyMessage</span><span class="o">(</span><span class="mi">20201</span><span class="o">);</span>  
+        <span class="n">Bundle</span> <span class="n">bundle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bundle</span><span class="o">();</span>  
+        <span class="n">bundle</span><span class="o">.</span><span class="na">putString</span><span class="o">(</span><span class="s">"extra2"</span><span class="o">,</span> <span class="s">"im a text from SecondActivityBroadcastReceiver"</span><span class="o">);</span>  
+        <span class="k">if</span><span class="o">(</span><span class="n">intent</span><span class="o">.</span><span class="na">getExtras</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="s">"if"</span><span class="o">).</span><span class="na">contains</span><span class="o">(</span><span class="s">"yes"</span><span class="o">)){</span>  
+            <span class="c1">//讲bundle放入结果中  </span>
+            <span class="n">setResultExtras</span><span class="o">(</span><span class="n">bundle</span><span class="o">);</span>  
+            <span class="c1">//取消广播  </span>
+<span class="c1">//          abortBroadcast();   </span>
+            <span class="n">h</span><span class="o">.</span><span class="na">sendEmptyMessage</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>  
+        <span class="o">}</span>  
+        <span class="k">else</span>   
+            <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">intent</span><span class="o">.</span><span class="na">getExtras</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="s">"extra"</span><span class="o">),</span> <span class="mi">0</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>  </code></pre></figure>
+
+<h2 id="thirdactivity---0">ThirdActivity   有序广播的最终接受者(优先级为0)</h2>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">pic</span><span class="o">.</span><span class="na">zx</span><span class="o">.</span><span class="na">testbroadcastreceiver</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">pic.zx.testbroadcastreceiver.MainActivity.handler_tell</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.content.BroadcastReceiver</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ThirdActivity</span> <span class="kd">extends</span> <span class="n">BroadcastReceiver</span><span class="o">{</span>  
+  
+    <span class="n">handler_tell</span> <span class="n">j</span> <span class="o">=</span> <span class="k">new</span> <span class="n">handler_tell</span><span class="o">();</span>  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onReceive</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="n">j</span><span class="o">.</span><span class="na">sendEmptyMessage</span><span class="o">(</span><span class="mi">202</span><span class="o">);</span>  
+		<span class="c1">//出问题的地方 获取整个Extras  </span>
+        <span class="n">Bundle</span> <span class="n">bundle</span> <span class="o">=</span> <span class="n">intent</span><span class="o">.</span><span class="na">getExtras</span><span class="o">();</span>  
+        <span class="c1">//获取前一个BroadcastReceiver所存入的extras  </span>
+        <span class="n">Bundle</span> <span class="n">bundle2</span> <span class="o">=</span> <span class="n">getResultExtras</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>  
+        <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="s">"初始信息为: "</span><span class="o">+</span><span class="n">bundle</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"extra"</span><span class="o">)+</span>  
+                <span class="s">"\n后添加的为: "</span><span class="o">+</span> <span class="n">bundle2</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"extra2"</span><span class="o">),</span> <span class="mi">1</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+<span class="o">}</span>  </code></pre></figure>
+
+<h2 id="androidmanifestxml">AndroidManifest.xml</h2>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>  
+<span class="nt">&lt;manifest</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>  
+    <span class="na">package=</span><span class="s">"pic.zx.testbroadcastreceiver"</span>  
+    <span class="na">android:versionCode=</span><span class="s">"1"</span>  
+    <span class="na">android:versionName=</span><span class="s">"1.0"</span> <span class="nt">&gt;</span>  
+  
+    <span class="nt">&lt;uses-sdk</span>  
+        <span class="na">android:minSdkVersion=</span><span class="s">"8"</span>  
+        <span class="na">android:targetSdkVersion=</span><span class="s">"18"</span> <span class="nt">/&gt;</span>  
+  
+    <span class="nt">&lt;application</span>  
+        <span class="na">android:allowBackup=</span><span class="s">"true"</span>  
+        <span class="na">android:icon=</span><span class="s">"@drawable/ic_launcher"</span>  
+        <span class="na">android:label=</span><span class="s">"@string/app_name"</span>  
+        <span class="na">android:theme=</span><span class="s">"@style/AppTheme"</span> <span class="nt">&gt;</span>  
+        <span class="nt">&lt;activity</span>  
+            <span class="na">android:name=</span><span class="s">"pic.zx.testbroadcastreceiver.MainActivity"</span>  
+            <span class="na">android:label=</span><span class="s">"@string/app_name"</span> <span class="nt">&gt;</span>  
+            <span class="nt">&lt;intent-filter&gt;</span>  
+                <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">"android.intent.action.MAIN"</span> <span class="nt">/&gt;</span>  
+  
+                <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">"android.intent.category.LAUNCHER"</span> <span class="nt">/&gt;</span>  
+            <span class="nt">&lt;/intent-filter&gt;</span>  
+        <span class="nt">&lt;/activity&gt;</span>  
+        <span class="nt">&lt;receiver</span> <span class="na">android:name=</span><span class="s">"pic.zx.testbroadcastreceiver.SecondActivity"</span><span class="nt">&gt;</span>  
+            <span class="nt">&lt;intent-filter</span> <span class="na">android:priority=</span><span class="s">"20"</span><span class="nt">&gt;</span>  
+                <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">"pic.zx.action.service"</span><span class="nt">/&gt;</span>  
+                 <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">"pic.zx.action.service2"</span><span class="nt">/&gt;</span>  
+            <span class="nt">&lt;/intent-filter&gt;</span>  
+        <span class="nt">&lt;/receiver&gt;</span>  
+        <span class="nt">&lt;receiver</span> <span class="na">android:name=</span><span class="s">"pic.zx.testbroadcastreceiver.ThirdActivity"</span><span class="nt">&gt;</span>  
+            <span class="nt">&lt;intent-filter</span> <span class="na">android:priority=</span><span class="s">"0"</span><span class="nt">&gt;</span>  
+                <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">"pic.zx.action.service"</span><span class="nt">/&gt;</span>  
+            <span class="nt">&lt;/intent-filter&gt;</span>  
+        <span class="nt">&lt;/receiver&gt;</span>  
+    <span class="nt">&lt;/application&gt;</span>  
+  
+<span class="nt">&lt;/manifest&gt;</span>  </code></pre></figure>
+
+</div>
+
+<div>
+	
+	<div class="eof"></div>
+	
+</div>
+
+<div class="share">
+    <p>Share this post with: </p>
+	<a href="https://twitter.com/intent/tweet?text=Android BroadcastReceiver简单实例@zhuxu1&amp;url=https://zhuxu1.github.io/zhuxu1.github.io/bug/broadcastreceiver.html" class="twitter-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://zhuxu1.github.io/zhuxu1.github.io/bug/broadcastreceiver.html" class="facebook-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://plus.google.com/share?url=https://zhuxu1.github.io/zhuxu1.github.io/bug/broadcastreceiver.html" class="googleplus-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+</div>
+
+
+<div id="disqus_thread"></div>
+
+
+<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+		var disqus_shortname = "zhuxu1";
+		var disqus_identifier = "/bug/broadcastreceiver";
+		var disqus_url = "https://zhuxu1.github.io/bug/broadcastreceiver.html";
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+
+ 
+</div>
+
+
+</article>
+
+  </div>
+
+</body>
+
+<foot>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <center>
+        
+		<p><a class="link" href="/zhuxu1.github.io/archive/">文章</a> /
+		<a class="link" href="/zhuxu1.github.io/category/">类别</a> / 
+		<a class="link" href="/zhuxu1.github.io/tags/">标签</a> / 
+		<a class="link" href="/zhuxu1.github.io/about/">关于</a> /
+		<a class="link" href="/zhuxu1.github.io/contact/">Contact</a>
+        </p>
+
+        <span><script>document.write(new Date().getFullYear());</script></span>
+        <span>&copy;</span>
+        
+		<a class="link" href="/zhuxu1.github.io">FIXME</a>
+		<br>
+		<span>Theme &copy; <a class="link" href="http://weibo.com/fixxz" target="_blank"> 新浪微博</a> | Git : </span>
+				<iframe
+			style="margin-left: 2px; margin-bottom:-5px;"
+			frameborder="0" scrolling="0" width="91px" height="20px"
+			src="https://ghbtns.com/github-btn.html?user=zhuxu1&repo=zhuxu1.github.io&type=star&count=true" >
+		</iframe>
+
+    </center>
+    
+  </div>
+
+</footer>
+
+    <foot>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Derictory -->
+
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+
+<!-- Hit analytics -->
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Directory -->
+
+<script src="/zhuxu1.github.io/js/main.js"></script>
+
+</foot>
+
+
+</foot>
+
+</html>

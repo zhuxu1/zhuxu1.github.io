@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS -->
+
+  <link rel="stylesheet" href="/zhuxu1.github.io/css/main.css">
+  <link rel="canonical" href="https://zhuxu1.github.io/zhuxu1.github.io/essay/wrapcontent.html">
+  <link rel="alternate" type="application/rss+xml" title="Zhuxu's Blog" href="https://zhuxu1.github.io/zhuxu1.github.io/feed.xml">
+
+<!-- Google font -->
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto Sans">
+
+<!-- font awesome -->
+
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+
+</head>
+
+
+  
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+  ga('create', 'UA-75034651-1', 'auto');
+  ga('send', 'pageview');
+    
+	</script>
+
+
+  
+
+  
+
+  </head>
+
+  <body>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Android wrapcontent随笔</title>
+  <meta name="description" content="`&lt;ImageView      android:id="@+id/img1"      android:layout_width="64dp"      android:layout_height="64dp"      android:src="@drawable/ic_launcher" /&gt; ...">
+</head>
+
+
+  <div class="wrapper">
+          <header class="post-header">
+
+    <center><div class="post-title" itemprop="name headline">Android wrapcontent随笔</div>
+
+		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="28 Mar 2016" itemprop="datePublished">Mar 28 2016</time>
+
+		&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">fixxz</span>
+        
+		<br>
+		<i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span>
+	</div>
+
+        
+        <div class="post-tags">
+        
+		<a class="post-tags-item" href="https://zhuxu1.github.io/zhuxu1.github.io/tags/">essay</a>
+        
+	</div>
+    </center>
+    
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="post-content">
+    <center>
+	
+	<p>wrapcontent</p>
+	
+    </center>
+	<h2>Directory</h2>
+</div>
+
+<div id="category"></div>
+
+<div class="post-content" itemprop="articleBody">
+    <p>`<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/layout_parent" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@android:color/holo_green_light" android:orientation="horizontal"></LinearLayout></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;ImageView  
+    android:id="@+id/img1"  
+    android:layout_width="64dp"  
+    android:layout_height="64dp"  
+    android:src="@drawable/ic_launcher" /&gt;  
+  
+&lt;ImageView  
+    android:id="@+id/img2"  
+    android:layout_width="164dp"  
+    android:layout_height="164dp"  
+    android:background="@android:color/holo_orange_light"  
+    android:src="@drawable/ic_launcher" /&gt;  
+  
+&lt;LinearLayout  
+    android:id="@+id/layout1"  
+    android:layout_width="match_parent"  
+    android:layout_height="match_parent"  
+    android:background="@android:color/holo_purple"  
+    android:orientation="vertical" &gt;  
+&lt;/LinearLayout&gt;  
+</code></pre>
+</div>
+<p>&lt;/LinearLayout&gt;`</p>
+
+<p>如上  先上结论 id为 layout_parent 的父控件里的wrap_content 是根据子控件的height 来计算的，计算的优先级是如果子控件中设置了固定高度，则计算 “固定高度”，如 64dp 。计算固定高度时会根据最大的高度来计算父控件的高度。如果子控件中没有固定高度，则根据子控件的高度来计算父控件的高度。</p>
+
+<p>如上边的代码，父控件中的height 为 wrap_content，即根据内容设置高度。而它的子控件中img1,img2都为 固定数值 ，即有明确数字，则根据较大的数值，即img2的164dp得到父控件(layout_parent)的高度为164dp。  子控件layout1的高度为match_parent 即填充父类，则layout1的高度也为164dp
+<br />计算父控件大小的优先级：(父控件设置为wrap_content的前提下)
+<u>子控件设置固定大小的情况下：则根据 “设置最大固定大小的子控件的大小” 来计算父控件的大小，不计算match_parent,fill_parent;
+子控件未设置固定大小的情况下：则根据 子控件的大小计算父控件的大小，如子控件为match_parnet，则父控件大大小即为填充屏幕</u></p>
+
+<p>随笔</p>
+
+</div>
+
+<div>
+	
+	<div class="eof"></div>
+	
+</div>
+
+<div class="share">
+    <p>Share this post with: </p>
+	<a href="https://twitter.com/intent/tweet?text=Android wrapcontent随笔@zhuxu1&amp;url=https://zhuxu1.github.io/zhuxu1.github.io/essay/wrapcontent.html" class="twitter-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://zhuxu1.github.io/zhuxu1.github.io/essay/wrapcontent.html" class="facebook-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://plus.google.com/share?url=https://zhuxu1.github.io/zhuxu1.github.io/essay/wrapcontent.html" class="googleplus-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+</div>
+
+
+<div id="disqus_thread"></div>
+
+
+<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+		var disqus_shortname = "zhuxu1";
+		var disqus_identifier = "/essay/wrapcontent";
+		var disqus_url = "https://zhuxu1.github.io/essay/wrapcontent.html";
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+
+ 
+</div>
+
+
+</article>
+
+  </div>
+
+</body>
+
+<foot>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <center>
+        
+		<p><a class="link" href="/zhuxu1.github.io/archive/">文章</a> /
+		<a class="link" href="/zhuxu1.github.io/category/">类别</a> / 
+		<a class="link" href="/zhuxu1.github.io/tags/">标签</a> / 
+		<a class="link" href="/zhuxu1.github.io/about/">关于</a> /
+		<a class="link" href="/zhuxu1.github.io/contact/">Contact</a>
+        </p>
+
+        <span><script>document.write(new Date().getFullYear());</script></span>
+        <span>&copy;</span>
+        
+		<a class="link" href="/zhuxu1.github.io">FIXME</a>
+		<br>
+		<span>Theme &copy; <a class="link" href="http://weibo.com/fixxz" target="_blank"> 新浪微博</a> | Git : </span>
+				<iframe
+			style="margin-left: 2px; margin-bottom:-5px;"
+			frameborder="0" scrolling="0" width="91px" height="20px"
+			src="https://ghbtns.com/github-btn.html?user=zhuxu1&repo=zhuxu1.github.io&type=star&count=true" >
+		</iframe>
+
+    </center>
+    
+  </div>
+
+</footer>
+
+    <foot>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Derictory -->
+
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+
+<!-- Hit analytics -->
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Directory -->
+
+<script src="/zhuxu1.github.io/js/main.js"></script>
+
+</foot>
+
+
+</foot>
+
+</html>

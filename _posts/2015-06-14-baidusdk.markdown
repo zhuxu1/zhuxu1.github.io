@@ -1,0 +1,38 @@
+---
+layout: post
+title: "BaiduSDK定位Demo"
+subtitle: "demo"
+date: 2015-02-13
+author: fixxz
+category: demo
+tags: demo
+finished: true
+---
+
+最近利用百度SDK做了个城市定位,期间犯了一些错误,所以分享出来,希望能帮助大家.<br>
+
+## step1 申请开发者key
+
+[网址](http://developer.baidu.com/map/)  
+ 首先要申请百度开发者账号...  你可以百度 "百度地图SDK"...后面就不说了 跟步骤来就行了 <br>
+ 申请完成后去控制台里添加你的应用  得到应用<b>AK码</b>
+ [教程](http://developer.baidu.com/map/index.php?title=androidsdk/guide/key)
+
+## step2 下载sdk
+
+ [地址](http://developer.baidu.com/map/index.php?title=Android-locsdk/geosdk-android-download)
+ downloading ..  loading ...
+
+## step3 导入
+
+ 百度定位SDK的说明文档:  [文档](http://developer.baidu.com/map/index.php?title=android-locsdk/guide/v5-0)
+ 按照教程配置  只要你按照教程和文档来 基本不会出错
+
+## step4 tips 
+
+ 另外模拟器正常情况下是没法进行定位测试的. </br>
+想要在模拟器上测试  需要让模拟器模拟出GPS信号 </br>
+可以用mockgps</br>
+
+代码我就不贴了  [附上下载地址](http://download.csdn.net/download/zhuxu820_/8772683)
+

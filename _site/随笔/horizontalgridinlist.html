@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS -->
+
+  <link rel="stylesheet" href="/zhuxu1.github.io/css/main.css">
+  <link rel="canonical" href="https://zhuxu1.github.io/zhuxu1.github.io/%E9%9A%8F%E7%AC%94/horizontalgridinlist.html">
+  <link rel="alternate" type="application/rss+xml" title="Zhuxu's Blog" href="https://zhuxu1.github.io/zhuxu1.github.io/feed.xml">
+
+<!-- Google font -->
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto Sans">
+
+<!-- font awesome -->
+
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+
+</head>
+
+
+  
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+  ga('create', 'UA-75034651-1', 'auto');
+  ga('send', 'pageview');
+    
+	</script>
+
+
+  
+
+  
+
+  </head>
+
+  <body>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>自定义无滚动条GridView</title>
+  <meta name="description" content="自定义纵向无滚动条的GridView">
+</head>
+
+
+  <div class="wrapper">
+          <header class="post-header">
+
+    <center><div class="post-title" itemprop="name headline">自定义无滚动条GridView</div>
+
+		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="18 Jun 2015" itemprop="datePublished">Jun 18 2015</time>
+
+		&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">fixxz</span>
+        
+		<br>
+		<i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span>
+	</div>
+
+        
+        <div class="post-tags">
+        
+		<a class="post-tags-item" href="https://zhuxu1.github.io/zhuxu1.github.io/tags/">随笔</a>
+        
+	</div>
+    </center>
+    
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="post-content">
+    <center>
+	
+	<p>随笔啦</p>
+	
+    </center>
+	<h2>Directory</h2>
+</div>
+
+<div id="category"></div>
+
+<div class="post-content" itemprop="articleBody">
+    <h2 id="gridview">自定义纵向无滚动条的GridView</h2>
+
+<p>此处关键就是重写onMeasure</p>
+
+<p>`public class HorizontalGridView extends GridView{<br />
+    public HorizontalGridView(Context context, AttributeSet attrs) {<br />
+        super(context, attrs);<br />
+    }</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>@Override  
+protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {  
+    int measureSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE &gt;&gt; 2,  
+            MeasureSpec.AT_MOST);  
+    super.onMeasure(widthMeasureSpec, measureSpec);  
+}  
+</code></pre>
+</div>
+
+<p>}  `</p>
+
+<h2 id="gridview-1">配置gridView</h2>
+<p>在这里用到了LayoutInflator
+在实际开发中LayoutInflater这个类还是非常有用的，它的作用类似于findViewById()。
+不同点是LayoutInflater是用来找res/layout/下的xml布局文件，并且实例化；而findViewById()是找xml布局文件下的具体widget控件(如Button、TextView等)。</p>
+
+<p>LayoutParams params = new LinearLayout.LayoutParams(1,LinearLayout.LayoutParams.MATCH_PARENT);
+// 此处的 1  ,表示Gridview的宽度  可以在此处直接指定  也可在稍后更改
+<code class="highlighter-rouge">viewHolder.gridView.setColumnWidth(150); // 设置列宽  为150   可根据需要自行更改  
+viewHolder.gridView.setStretchMode(GridView.NO_STRETCH); // 设置为禁止拉伸模式  
+viewHolder.gridView.setNumColumns(GridView.AUTO_FIT); // 设置列数  每一列的item数目 设置为自动  
+viewHolder.gridView.setHorizontalSpacing(2); // 两列之间的间距   
+viewHolder.gridView.setLayoutParams(params); // 设置GirdView布局参数,横向布局的关键  </code></p>
+
+<h2 id="baseadapter">baseAdapter</h2>
+<p><a href="http://www.cnblogs.com/xiaowenji/archive/2010/12/08/1900579.html">adapter</a>
+<code class="highlighter-rouge">// 然后系统调用getView()方法，根据getCount的长度逐一绘制ListView的每一行。  
+    @Override  
+    public View getView(int position, View convertView, ViewGroup parent) {  
+        ViewHolder viewHolder = null;  
+        if (convertView == null) {  
+            // 将 list_item 转换为View "LayoutInflater的作用"  
+            convertView = LayoutInflater.from(context).inflate(  
+                    R.layout.list_item, null);  
+            viewHolder = new ViewHolder(convertView);  
+            // setTag()会把View与ViewHolder绑定，形成一一对应的关系，拖动listview的时候会重新绘制每一条item  
+            convertView.setTag(viewHolder);  
+        } else {  
+            // 但是那些已经取得绑定的View，会调用getTag()方法，就不会重新绘制，而是拿到内存中已经取得的资源，提高了效率  
+            viewHolder = (ViewHolder) convertView.getTag();  
+        }  
+        viewHolder.head_text.setText(title_list.get(position) + "");  
+}  </code></p>
+
+<h2 id="tips">tips</h2>
+<p>setColumnWidth  设置列宽
+setStretchMode   设置模式
+setNumColumns   设置每一列Item的数目
+setHorizontalSpacing    设置两列之间的间距
+setLayoutParams    设置Gridview布局参数</p>
+
+</div>
+
+<div>
+	
+	<div class="eof"></div>
+	
+</div>
+
+<div class="share">
+    <p>Share this post with: </p>
+	<a href="https://twitter.com/intent/tweet?text=自定义无滚动条GridView@zhuxu1&amp;url=https://zhuxu1.github.io/zhuxu1.github.io/%E9%9A%8F%E7%AC%94/horizontalgridinlist.html" class="twitter-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://zhuxu1.github.io/zhuxu1.github.io/%E9%9A%8F%E7%AC%94/horizontalgridinlist.html" class="facebook-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://plus.google.com/share?url=https://zhuxu1.github.io/zhuxu1.github.io/%E9%9A%8F%E7%AC%94/horizontalgridinlist.html" class="googleplus-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+</div>
+
+
+<div id="disqus_thread"></div>
+
+
+<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+		var disqus_shortname = "zhuxu1";
+		var disqus_identifier = "/%E9%9A%8F%E7%AC%94/horizontalgridinlist";
+		var disqus_url = "https://zhuxu1.github.io/%E9%9A%8F%E7%AC%94/horizontalgridinlist.html";
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+
+ 
+</div>
+
+
+</article>
+
+  </div>
+
+</body>
+
+<foot>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <center>
+        
+		<p><a class="link" href="/zhuxu1.github.io/archive/">文章</a> /
+		<a class="link" href="/zhuxu1.github.io/category/">类别</a> / 
+		<a class="link" href="/zhuxu1.github.io/tags/">标签</a> / 
+		<a class="link" href="/zhuxu1.github.io/about/">关于</a> /
+		<a class="link" href="/zhuxu1.github.io/contact/">Contact</a>
+        </p>
+
+        <span><script>document.write(new Date().getFullYear());</script></span>
+        <span>&copy;</span>
+        
+		<a class="link" href="/zhuxu1.github.io">FIXME</a>
+		<br>
+		<span>Theme &copy; <a class="link" href="http://weibo.com/fixxz" target="_blank"> 新浪微博</a> | Git : </span>
+				<iframe
+			style="margin-left: 2px; margin-bottom:-5px;"
+			frameborder="0" scrolling="0" width="91px" height="20px"
+			src="https://ghbtns.com/github-btn.html?user=zhuxu1&repo=zhuxu1.github.io&type=star&count=true" >
+		</iframe>
+
+    </center>
+    
+  </div>
+
+</footer>
+
+    <foot>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Derictory -->
+
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+
+<!-- Hit analytics -->
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Directory -->
+
+<script src="/zhuxu1.github.io/js/main.js"></script>
+
+</foot>
+
+
+</foot>
+
+</html>

@@ -1,0 +1,134 @@
+---
+layout: post
+title: "Android 轮播图"
+subtitle: "Viewpage"
+date: 2016-05-11
+author: fixxz
+category: demo
+tags: dmo
+finished: true
+---
+{% highlight java %}
+public class CarouselView extends RelativeLayout {  
+  
+    public CarouselView(Context context, AttributeSet attrs) {  
+        super(context, attrs);  
+        init();  
+    }  
+  
+    private ScheduledExecutorService executor;  
+    private CirclePageIndicator indicator;  
+    private ViewPager viewPager;  
+    ArrayList<ImageView> list;  
+    private ArrayList<? extends View> views;  
+  
+    private void init() {  
+        LayoutInflater.from(getContext()).inflate(R.layout.layout_carouseview,  
+                this);  
+  
+        viewPager = (ViewPager) findViewById(R.id.carouseview);  
+        indicator = (CirclePageIndicator) findViewById(R.id.carouseview_indicator);  
+    }  
+  
+    float start_x = 0, start_y = 0, end_x = 0, end_y = 0;  
+  
+    public void setData(ArrayList<? extends View> views,  
+            ViewPagerAdapter adapter) {  
+        this.views = views;  
+        viewPager.setOnTouchListener(new View.OnTouchListener() {  
+  
+            @Override  
+            public boolean onTouch(View v, MotionEvent event) {  
+                int action = event.getAction();  
+                if (action == MotionEvent.ACTION_DOWN) {  
+                    // toast("down");  
+                    // Log.i("zhuxu", "down");  
+                    start_x = event.getX();  
+                    start_y = event.getY();  
+                } else if (action == MotionEvent.ACTION_UP) {  
+                    // toast("up");  
+                    // Log.i("zhuxu", "up");  
+                    end_x = event.getX();  
+                    end_y = event.getY();  
+                } else if (action == MotionEvent.ACTION_MOVE) {  
+                    // Log.i("zhuxu", "move : " + "start_x : " + start_x  
+                    // + "start_y : " + start_y + "end_x : " + end_x  
+                    // + "end_y : " + end_y);  
+                    // toast("move");  
+                    // if (Math.abs(end_x - start_x) > 50 && Math.abs(end_y -  
+                    // start_y) < 100) {  
+                    if (Math.abs(end_x - start_x) > Math.abs(end_y - start_y)) {  
+                        // Log.i("zhuxu", "横向移动！");  
+                        //此句代码是为了通知他的父View 现在进行的是本控件的操作，不要对我的操作进行干扰  
+                        v.getParent().requestDisallowInterceptTouchEvent(true);  
+                        return false; // 是否需要View继续处理  
+                    } else {  
+                        //接近垂直滑动，交给父控件处理  
+                        v.getParent().requestDisallowInterceptTouchEvent(false);  
+                        // Log.i("zhuxu", "纵向移动！");  
+                        return true;  // 是否需要View继续处理  
+                    }  
+                }  
+                return false;  
+            }  
+        });  
+  
+        viewPager.setAdapter(adapter);  
+        indicator.setOnPageChangeListener(new OnPageChangeListener() {  
+  
+            @Override  
+            public void onPageSelected(int arg0) {  
+                isChanged = true;  
+            }  
+  
+            @Override  
+            public void onPageScrolled(int arg0, float arg1, int arg2) {  
+  
+            }  
+  
+            @Override  
+            public void onPageScrollStateChanged(int arg0) {  
+  
+            }  
+        });  
+        indicator.setViewPager(viewPager);  
+  
+    }  
+  
+    public ViewPager getCarouselView() {  
+        return viewPager;  
+    }  
+  
+    public void startCarouse() {  
+        executor = Executors.newSingleThreadScheduledExecutor();  
+        executor.scheduleWithFixedDelay(new ViewpagerTask(),  
+                2,3, TimeUnit.SECONDS);  
+    }  
+  
+    public void cancleCarouse() {  
+        if (executor != null)  
+            executor.shutdown();  
+    }  
+  
+    private int currentItem = 0;  
+    private boolean isChanged = false;  
+  
+    private class ViewpagerTask implements Runnable {  
+  
+        @Override  
+        public void run() {  
+            if (isChanged) {  
+                isChanged = !isChanged;  
+            } else {  
+                currentItem = (viewPager.getCurrentItem() + 1) % views.size();  
+                post(new Runnable() {  
+                    public void run() {  
+                        viewPager.setCurrentItem(currentItem);  
+                    }  
+                });  
+            }  
+        }  
+    }  
+}  
+{% endhighlight %}
+不放布局文件会被打死/.?

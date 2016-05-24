@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS -->
+
+  <link rel="stylesheet" href="/zhuxu1.github.io/css/main.css">
+  <link rel="canonical" href="https://zhuxu1.github.io/zhuxu1.github.io/essay/webview.html">
+  <link rel="alternate" type="application/rss+xml" title="Zhuxu's Blog" href="https://zhuxu1.github.io/zhuxu1.github.io/feed.xml">
+
+<!-- Google font -->
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto Sans">
+
+<!-- font awesome -->
+
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+
+</head>
+
+
+  
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+  ga('create', 'UA-75034651-1', 'auto');
+  ga('send', 'pageview');
+    
+	</script>
+
+
+  
+
+  
+
+  </head>
+
+  <body>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Webview随笔一二</title>
+  <meta name="description" content="webview loaddata乱码webView.getSettings().setDefaultTextEncodingName("UTF -8");//设置默认为utf-8    webView.loadData(htmlData, "text/html", "UTF -8");//API提供的标准用法，无...">
+</head>
+
+
+  <div class="wrapper">
+          <header class="post-header">
+
+    <center><div class="post-title" itemprop="name headline">Webview随笔一二</div>
+
+		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="27 Jan 2016" itemprop="datePublished">Jan 27 2016</time>
+
+		&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">fixxz</span>
+        
+		<br>
+		<i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span>
+	</div>
+
+        
+        <div class="post-tags">
+        
+		<a class="post-tags-item" href="https://zhuxu1.github.io/zhuxu1.github.io/tags/">essay</a>
+        
+	</div>
+    </center>
+    
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="post-content">
+    <center>
+	
+	<p>webview</p>
+	
+    </center>
+	<h2>Directory</h2>
+</div>
+
+<div id="category"></div>
+
+<div class="post-content" itemprop="articleBody">
+    <h2 id="webview-loaddata">webview loaddata乱码</h2>
+<p><code class="highlighter-rouge">webView.getSettings().setDefaultTextEncodingName("UTF -8");//设置默认为utf-8    
+webView.loadData(htmlData, "text/html", "UTF -8");//API提供的标准用法，无法解决乱码问题    
+webView.loadData(htmlData, "text/html; charset=UTF-8", null);//这种写法可以正确解码    </code></p>
+
+<h2 id="webview-">webview 自适应图片大小</h2>
+<p>只需要在要显示的Html字符串后 添加 这段 代码  便可实现自适应
+<code class="highlighter-rouge">// css  
+    public static final String APP_CSS = "&lt;style&gt; html, body{ margin:0; padding:1px; color:#666666; font-style:normal; font-weight:normal; font-size:13px;} div, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, select, p, blockquote, th, td, ol, ul, li{ width:auto; margin:0; padding:0; color:#666666; font-style:normal; font-weight:normal; font-size:13px;} fieldset, img{ border:0;} address, button, caption, cite, code, dfn, em, input, optgroup, option, select, strong, textarea, th, var, span{  font : inherit; color:#666666; font-style:normal; font-weight:normal;} del, ins{ text-decoration:none;} ol, ul, dl{margin-left : 15px;} ol{ list-style:decimal outside;} ul{ list-style:disc outside;} li{ margin:0; padding:0; width:auto; color:#666666; font-style:normal; font-weight:normal; text-indent:-3px; font-size:13px;} h1, h2, h3, h4, h5, h6{ width:auto; font-size:100%; font-weight:normal;} abbr, acronym{ border:0; font-variant:normal;} a, a:link, a:visited, a:hover, a:active{ text-decoration:none; color:#666666} table{ border-collapse:collapse; border-spacing:0; width:auto;} table{ width:100%; border:1px solid #666; } table td, table th, tbody td, tbody th{ width:auto; padding:3px; border:1px solid #c1c1c1; } strong{font-weight:bold} &lt;/style&gt;";  </code></p>
+
+</div>
+
+<div>
+	
+	<div class="eof"></div>
+	
+</div>
+
+<div class="share">
+    <p>Share this post with: </p>
+	<a href="https://twitter.com/intent/tweet?text=Webview随笔一二@zhuxu1&amp;url=https://zhuxu1.github.io/zhuxu1.github.io/essay/webview.html" class="twitter-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://zhuxu1.github.io/zhuxu1.github.io/essay/webview.html" class="facebook-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://plus.google.com/share?url=https://zhuxu1.github.io/zhuxu1.github.io/essay/webview.html" class="googleplus-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+</div>
+
+
+<div id="disqus_thread"></div>
+
+
+<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+		var disqus_shortname = "zhuxu1";
+		var disqus_identifier = "/essay/webview";
+		var disqus_url = "https://zhuxu1.github.io/essay/webview.html";
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+
+ 
+</div>
+
+
+</article>
+
+  </div>
+
+</body>
+
+<foot>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <center>
+        
+		<p><a class="link" href="/zhuxu1.github.io/archive/">文章</a> /
+		<a class="link" href="/zhuxu1.github.io/category/">类别</a> / 
+		<a class="link" href="/zhuxu1.github.io/tags/">标签</a> / 
+		<a class="link" href="/zhuxu1.github.io/about/">关于</a> /
+		<a class="link" href="/zhuxu1.github.io/contact/">Contact</a>
+        </p>
+
+        <span><script>document.write(new Date().getFullYear());</script></span>
+        <span>&copy;</span>
+        
+		<a class="link" href="/zhuxu1.github.io">FIXME</a>
+		<br>
+		<span>Theme &copy; <a class="link" href="http://weibo.com/fixxz" target="_blank"> 新浪微博</a> | Git : </span>
+				<iframe
+			style="margin-left: 2px; margin-bottom:-5px;"
+			frameborder="0" scrolling="0" width="91px" height="20px"
+			src="https://ghbtns.com/github-btn.html?user=zhuxu1&repo=zhuxu1.github.io&type=star&count=true" >
+		</iframe>
+
+    </center>
+    
+  </div>
+
+</footer>
+
+    <foot>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Derictory -->
+
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+
+<!-- Hit analytics -->
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Directory -->
+
+<script src="/zhuxu1.github.io/js/main.js"></script>
+
+</foot>
+
+
+</foot>
+
+</html>

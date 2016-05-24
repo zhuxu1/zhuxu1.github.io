@@ -1,0 +1,13 @@
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">String</span> <span class="n">timeToDisplay</span><span class="p">;</span>  
+<span class="no">Time</span> <span class="n">time</span> <span class="o">=</span> <span class="kp">new</span> <span class="no">Time</span><span class="p">();</span>  
+   <span class="n">time</span><span class="p">.</span><span class="nf">setToNow</span><span class="p">();</span>  
+   <span class="n">timeToDisplay</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">hour</span> <span class="o">+</span> <span class="s2">":"</span> <span class="o">+</span> <span class="n">time</span><span class="p">.</span><span class="nf">minute</span> <span class="o">+</span> <span class="s2">":"</span>  
+   <span class="o">+</span> <span class="n">time</span><span class="p">.</span><span class="nf">second</span><span class="p">;</span>  </code></pre></figure>
+
+<p>系统默认不显示“0”
+即当时间为六时七分八秒时，显示为 “6:7:8”
+那么只需要添加一个简单的三目运算符就可以实现自动补全‘’0”</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">timeToDisplay</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">hour</span> <span class="o">+</span> <span class="s2">":"</span> <span class="o">+</span> <span class="p">(</span><span class="n">time</span><span class="p">.</span><span class="nf">minute</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="p">?</span> <span class="s2">"0"</span><span class="o">+</span><span class="n">time</span><span class="p">.</span><span class="nf">minute</span> <span class="p">:</span> <span class="n">time</span><span class="p">.</span><span class="nf">minute</span><span class="p">)</span> <span class="o">+</span> <span class="s2">":"</span><span class="p">;</span>   </code></pre></figure>
+

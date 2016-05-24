@@ -1,0 +1,21 @@
+---
+layout: post
+title: "Welcome to Zhuxu's Blog"
+subtitle: "A simple Jekyll blog theme."
+date: 2016-03-30
+author: fixxz
+category: Jekyll
+tags: blog
+finished: true
+---
+
+## Welcome
+
+[博客使用theme](https://github.com/itisbenjamin/Nice_Blog/)
+
+个人博客  记录随笔等各种
+
+
+
+
+
