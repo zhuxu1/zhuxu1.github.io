@@ -6,8 +6,8 @@
 </description>
     <link>https://zhuxu1.github.iohttps://zx4android.com/</link>
     <atom:link href="https://zhuxu1.github.iohttps://zx4android.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 26 May 2016 23:21:28 +0800</pubDate>
-    <lastBuildDate>Thu, 26 May 2016 23:21:28 +0800</lastBuildDate>
+    <pubDate>Thu, 26 May 2016 23:23:55 +0800</pubDate>
+    <lastBuildDate>Thu, 26 May 2016 23:23:55 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -59,9 +59,9 @@ DragSortListView 适用于带有任何优先级的列表:收藏夹、播放列�
 
 &lt;h2 id=&quot;section&quot;&gt;关键配置&lt;/h2&gt;
 &lt;p&gt;关键配置包括:
-*1. 设置drag_handle_id  ListItem中的一个View的资源id(或者ListItem的根view)。这个id用来识别“拖动的手柄”，只有当点击该view的时候才会触发拖动操作。使用默认DragSortController并且支持拖动操作的时候需要设置该属性。&lt;br /&gt;
-*2. remove_enabled 是否启用拖动删除的功能&lt;br /&gt;
-*3. drag_start_mode 设置启动拖动的手势 onDown/onDrag/onLongPress&lt;br /&gt;&lt;/p&gt;
+*1 设置drag_handle_id  ListItem中的一个View的资源id(或者ListItem的根view)。这个id用来识别“拖动的手柄”，只有当点击该view的时候才会触发拖动操作。使用默认DragSortController并且支持拖动操作的时候需要设置该属性。
+*2 remove_enabled 是否启用拖动删除的功能
+*3 drag_start_mode 设置启动拖动的手势 onDown/onDrag/onLongPress&lt;/p&gt;
 
 &lt;p&gt;更多资料查看相关连接&lt;/p&gt;
 
