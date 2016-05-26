@@ -4,7 +4,7 @@ name: FIXME # your name
 email: 332525966@qq.com # your email address
 description: >
     A Simple Jekyll Blog Theme. # this means to ignore newlines until "baseurl:"
-baseurl: "https://zx4android.com" # the subpath of your site, e.g. /blog
+baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://zhuxu1.github.io" # the base hostname & protocol for your site
 twitter_username: zhuxu1 # your Twitter username
 github_username: zhuxu1 # your Github username
