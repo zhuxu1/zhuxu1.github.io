@@ -1,0 +1,41 @@
+---
+layout: post
+title: "Android dslv可拖拽listView"
+subtitle: "dslv"
+date: 2016-05-26
+author: fixxz
+category: demo
+tags: demo
+finished: true
+---
+
+## 关于dslv
+
+> 引用
+
+"  
+	drag-sort-listview是一个支持拖拽排序和左右滑动删除功能的自定义ListView，重写了 TouchInterceptor (TI) 类来提供更加优美的拖拽动画效果。包含如下特性
+	完美的拖拽支持 (应该没有视觉问题)
+	在拖动的时候提供更平滑的滚动列表滚动
+	支持每个ListItem高度的多样性
+	Public startDrag() and stopDrag() methods.
+	有公开的接口可以自定义拖动的View
+	DragSortListView 适用于带有任何优先级的列表:收藏夹、播放列表、备忘录等。笔者认为这是目前Android开源实现拖动排序操作最完美的方案。
+	"
+	
+## 关键配置
+关键配置包括:
+1. 设置drag_handle_id  ListItem中的一个View的资源id(或者ListItem的根view)。这个id用来识别“拖动的手柄”，只有当点击该view的时候才会触发拖动操作。使用默认DragSortController并且支持拖动操作的时候需要设置该属性。
+2. remove_enabled 是否启用拖动删除的功能
+3. drag_start_mode 设置启动拖动的手势 onDown/onDrag/onLongPress
+更多资料查看相关连接
+
+[查看dslv demo](https://github.com/zhuxu1/DslvDemo)
+[查看dslv文档](http://bauerca.github.io/drag-sort-listview/reference/com/mobeta/android/dslv/DragSortListView.html)
+[查看dslv Github首页](http://bauerca.github.io/drag-sort-listview/reference/com/mobeta/android/dslv/DragSortListView.html)
+[查看delv 参考资料](http://www.oschina.net/code/snippet_219356_18991/)
+
+
+
+
+
