@@ -24,15 +24,15 @@ finished: true
 
 ## 关键配置
 关键配置包括:
-*1. 设置drag_handle_id  ListItem中的一个View的资源id(或者ListItem的根view)。这个id用来识别“拖动的手柄”，只有当点击该view的时候才会触发拖动操作。使用默认DragSortController并且支持拖动操作的时候需要设置该属性。
-*2. remove_enabled 是否启用拖动删除的功能
-*3. drag_start_mode 设置启动拖动的手势 onDown/onDrag/onLongPress
+*1. 设置drag_handle_id  ListItem中的一个View的资源id(或者ListItem的根view)。这个id用来识别“拖动的手柄”，只有当点击该view的时候才会触发拖动操作。使用默认DragSortController并且支持拖动操作的时候需要设置该属性。<br>
+*2. remove_enabled 是否启用拖动删除的功能<br>
+*3. drag_start_mode 设置启动拖动的手势 onDown/onDrag/onLongPress<br>
 
 更多资料查看相关连接
 
-[查看dslv demo](https://github.com/zhuxu1/DslvDemo) <br>
-[查看dslv文档](http://bauerca.github.io/drag-sort-listview/reference/com/mobeta/android/dslv/DragSortListView.html) <br>
-[查看dslv Github首页](http://bauerca.github.io/drag-sort-listview/reference/com/mobeta/android/dslv/DragSortListView.html) <br>
+[查看dslv demo](https://github.com/zhuxu1/DslvDemo) 
+[查看dslv文档](http://bauerca.github.io/drag-sort-listview/reference/com/mobeta/android/dslv/DragSortListView.html) 
+[查看dslv Github首页](http://bauerca.github.io/drag-sort-listview/reference/com/mobeta/android/dslv/DragSortListView.html) 
 [查看delv 参考资料](http://www.oschina.net/code/snippet_219356_18991/)
 
 
