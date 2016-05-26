@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS -->
+
+  <link rel="stylesheet" href="https://zx4android.com/css/main.css">
+  <link rel="canonical" href="https://zhuxu1.github.iohttps://zx4android.com/demo/dslvdemo.html">
+  <link rel="alternate" type="application/rss+xml" title="Zhuxu's Blog" href="https://zhuxu1.github.iohttps://zx4android.com/feed.xml">
+
+<!-- Google font -->
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto Sans">
+
+<!-- font awesome -->
+
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+
+</head>
+
+
+  
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+  ga('create', 'UA-75034651-1', 'auto');
+  ga('send', 'pageview');
+    
+	</script>
+
+
+  
+
+  
+
+  </head>
+
+  <body>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Android dslv可拖拽listView</title>
+  <meta name="description" content="关于dslv">
+</head>
+
+
+  <div class="wrapper">
+          <header class="post-header">
+
+    <center><div class="post-title" itemprop="name headline">Android dslv可拖拽listView</div>
+
+		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="26 May 2016" itemprop="datePublished">May 26 2016</time>
+
+		&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">fixxz</span>
+        
+		<br>
+		<i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span>
+	</div>
+
+        
+        <div class="post-tags">
+        
+		<a class="post-tags-item" href="https://zhuxu1.github.iohttps://zx4android.com/tags/">demo</a>
+        
+	</div>
+    </center>
+    
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="post-content">
+    <center>
+	
+	<p>dslv</p>
+	
+    </center>
+	<h2>Directory</h2>
+</div>
+
+<div id="category"></div>
+
+<div class="post-content" itemprop="articleBody">
+    <h2 id="dslv">关于dslv</h2>
+
+<blockquote>
+  <p>引用</p>
+</blockquote>
+
+<p>”  
+	drag-sort-listview是一个支持拖拽排序和左右滑动删除功能的自定义ListView，重写了 TouchInterceptor (TI) 类来提供更加优美的拖拽动画效果。包含如下特性
+	完美的拖拽支持 (应该没有视觉问题)
+	在拖动的时候提供更平滑的滚动列表滚动
+	支持每个ListItem高度的多样性
+	Public startDrag() and stopDrag() methods.
+	有公开的接口可以自定义拖动的View
+	DragSortListView 适用于带有任何优先级的列表:收藏夹、播放列表、备忘录等。笔者认为这是目前Android开源实现拖动排序操作最完美的方案。
+	“</p>
+
+<h2 id="section">关键配置</h2>
+<p>关键配置包括:
+1. 设置drag_handle_id  ListItem中的一个View的资源id(或者ListItem的根view)。这个id用来识别“拖动的手柄”，只有当点击该view的时候才会触发拖动操作。使用默认DragSortController并且支持拖动操作的时候需要设置该属性。
+2. remove_enabled 是否启用拖动删除的功能
+3. drag_start_mode 设置启动拖动的手势 onDown/onDrag/onLongPress
+更多资料查看相关连接</p>
+
+<p><a href="https://github.com/zhuxu1/DslvDemo">查看dslv demo</a>
+<a href="http://bauerca.github.io/drag-sort-listview/reference/com/mobeta/android/dslv/DragSortListView.html">查看dslv文档</a>
+<a href="http://bauerca.github.io/drag-sort-listview/reference/com/mobeta/android/dslv/DragSortListView.html">查看dslv Github首页</a>
+<a href="http://www.oschina.net/code/snippet_219356_18991/">查看delv 参考资料</a></p>
+
+
+</div>
+
+<div>
+	
+	<div class="eof"></div>
+	
+</div>
+
+<div class="share">
+   <!-- <p>Share this post with: </p>
+	<a href="https://twitter.com/intent/tweet?text=Android dslv可拖拽listView@zhuxu1&amp;url=https://zhuxu1.github.iohttps://zx4android.com/demo/dslvdemo.html" class="twitter-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://zhuxu1.github.iohttps://zx4android.com/demo/dslvdemo.html" class="facebook-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://plus.google.com/share?url=https://zhuxu1.github.iohttps://zx4android.com/demo/dslvdemo.html" class="googleplus-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+	!-->
+</div>
+
+
+<div id="disqus_thread"></div>
+
+
+<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+		var disqus_shortname = "zhuxu1";
+		var disqus_identifier = "/demo/dslvdemo";
+		var disqus_url = "https://zhuxu1.github.io/demo/dslvdemo.html";
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+
+ 
+</div>
+
+
+</article>
+
+  </div>
+
+</body>
+
+<foot>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <center>
+        
+		<p><a class="link" href="https://zx4android.com/archive/">文章</a> /
+		<a class="link" href="https://zx4android.com/category/">类别</a> / 
+		<a class="link" href="https://zx4android.com/tags/">标签</a> / 
+		<a class="link" href="https://zx4android.com/about/">关于</a> /
+		<a class="link" href="https://zx4android.com/contact/">X</a>
+        </p>
+
+        <span><script>document.write(new Date().getFullYear());</script></span>
+        <span>&copy;</span>
+        
+		<a class="link" href="https://zx4android.com">FIXME</a>
+		<br>
+		<span>Theme &copy; <a class="link" href="http://weibo.com/fixxz" target="_blank"> 新浪微博</a> | Git : </span>
+				<iframe
+			style="margin-left: 2px; margin-bottom:-5px;"
+			frameborder="0" scrolling="0" width="91px" height="20px"
+			src="https://ghbtns.com/github-btn.html?user=zhuxu1&repo=zhuxu1.github.io&type=star&count=true" >
+		</iframe>
+
+    </center>
+    
+  </div>
+
+</footer>
+
+    <foot>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Derictory -->
+
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+
+<!-- Hit analytics -->
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Directory -->
+
+<script src="https://zx4android.com/js/main.js"></script>
+
+</foot>
+
+
+</foot>
+
+</html>
