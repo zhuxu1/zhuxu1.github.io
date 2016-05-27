@@ -31,8 +31,11 @@ finished: true
 更多资料查看相关连接
 
 [查看dslv demo](https://github.com/zhuxu1/DslvDemo) 
+
 [查看dslv文档](http://bauerca.github.io/drag-sort-listview/reference/com/mobeta/android/dslv/DragSortListView.html) 
+
 [查看dslv Github首页](http://bauerca.github.io/drag-sort-listview/reference/com/mobeta/android/dslv/DragSortListView.html) 
+
 [查看delv 参考资料](http://www.oschina.net/code/snippet_219356_18991/)
 
 
