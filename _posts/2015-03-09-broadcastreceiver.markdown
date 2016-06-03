@@ -4,8 +4,8 @@ title: "Android BroadcastReceiver简单实例"
 subtitle: "demo"
 date: 2015-03-09
 author: fixxz
-category: bug
-tags: bug
+category: demo
+tags: demo
 finished: true
 ---
 ## MainActivity  广播发起者
