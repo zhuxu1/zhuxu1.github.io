@@ -1,0 +1,50 @@
+---
+layout: post
+title: "Java 根据sin求角度数"
+subtitle: "Math.asin"
+date: 2016-07-05
+author: fixxz
+category: github
+tags: github
+finished: true
+---
+
+最近在做 图片旋转的东西，关于如何求旋转角度的问题，着实有点头疼..数学东西要忘光了 
+所以记下来
+---
+关于sin的定义,
+>  即正弦函数.在直角三角形中，∠α（不是直角）的对边与斜边的比叫做∠α的正弦，记作sinα，即sinα=∠α的对边/∠α的斜边  。 sina在拉丁文中计做sinus，翻译的人把印度语当成阿拉伯语翻译，根据发音最接近的单词：海湾，翻译成sinuses。
+   按现代说法，正弦是直角三角形某个角（非直角）的对边与斜边之比，即：对边/斜边
+>
+而我要求得角度 的大小，用的是arcsin(反正弦函数). 其实我也不知道到底该怎么求 ..也不知道是不是.. 但是这是一种方法
+关于什么是arcsin函数，我也不知道  ，我只知道它可以用来求sin的结果..
+ 
+---
+在java中 Math.asin 得到的值是 通过弧度表现出来的  所以需要对得到的弧度值进行角度转换<br>
+'角度转换公式:
+ 弧度＝度×π/180 
+ 度＝弧度×180°/π 
+'
+{% highlight java %}
+	double duibian = 4; // 对边
+	double xiebian = 6; // 斜边
+	double f = get2xiaoshi(duibian / xiebian); 
+	double radian = get2xiaoshi(Math.asin(f)); // 弧度
+	double angle = get2xiaoshi(radian * 180 / 3.15); // 角度
+{% endhighlight %}
+---
+另外还有小数点位数问题。我在这里直接去π的小数点后两位即3.15.所有的小数都只取小数点后两位。
+{% highlight java %}
+private double get2xiaoshi(double value) {
+		DecimalFormat df = new DecimalFormat("#.00");
+		return Double.parseDouble(df.format(value));
+	}
+{% endhighlight %}
+
+
+
+
+
+
+
+
